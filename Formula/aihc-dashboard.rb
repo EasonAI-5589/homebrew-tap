@@ -11,7 +11,7 @@ class AihcDashboard < Formula
     libexec.install "aihc"
     (bin/"aihc").write <<~SH
       #!/bin/sh
-      exec "#{Formula["uv"].opt_bin}/uv" run --quiet --script "#{libexec}/aihc/scripts/aihc.py" "$@"
+      exec "#{formula_opt_bin("uv")}/uv" run --quiet --script "#{libexec}/aihc/scripts/aihc.py" "$@"
     SH
   end
 

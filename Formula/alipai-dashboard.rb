@@ -11,7 +11,7 @@ class AlipaiDashboard < Formula
     libexec.install "alipai"
     (bin/"alipai").write <<~SH
       #!/bin/sh
-      exec "#{Formula["uv"].opt_bin}/uv" run --quiet --script "#{libexec}/alipai/scripts/alipai.py" "$@"
+      exec "#{formula_opt_bin("uv")}/uv" run --quiet --script "#{libexec}/alipai/scripts/alipai.py" "$@"
     SH
   end
 
