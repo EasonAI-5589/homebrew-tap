@@ -1,0 +1,23 @@
+name: test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  homebrew:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate formulae
+        run: |
+          brew style Formula/aihc-dashboard.rb Formula/alipai-dashboard.rb
+          brew audit --strict Formula/aihc-dashboard.rb Formula/alipai-dashboard.rb
+      - name: Install and test AIHC dashboard
+        run: |
+          brew install --formula ./Formula/aihc-dashboard.rb
+          brew test aihc-dashboard
+      - name: Install and test AliPAI dashboard
+        run: |
+          brew install --formula ./Formula/alipai-dashboard.rb
+          brew test alipai-dashboard
